@@ -15,4 +15,5 @@ public class UsersApiApplication {
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
+
 }
