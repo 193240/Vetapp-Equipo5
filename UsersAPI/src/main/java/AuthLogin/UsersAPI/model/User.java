@@ -1,20 +1,40 @@
 package AuthLogin.UsersAPI.model;
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
-@MappedSuperclass
-public class User extends BaseEntity {
-    @Column(name = "user")
-    @NotEmpty
-    private String user;
+@Entity
+@Table(name="Usuario")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idUsuario;
 
+    @Column(name = "user")
+    private String user;
     @Column(name = "password")
-    @NotEmpty
-    private String password;
+    private String  password;
+    @Column(name = "tipoU")
+    private String idDuenio;
+
+    public User(){}
+
+    public User(int idUsuario, String user, String password, String idDuenio) {
+        this.idUsuario = idUsuario;
+        this.user = user;
+        this.password = password;
+        this.idDuenio = idDuenio;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
     public String getUser() {
-        return this.user;
+        return user;
     }
 
     public void setUser(String user) {
@@ -22,11 +42,18 @@ public class User extends BaseEntity {
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public String getIdDuenio() {
+        return idDuenio;
+    }
+
+    public void setIdDuenio(String idDuenio) {
+        this.idDuenio = idDuenio;
+    }
 }
