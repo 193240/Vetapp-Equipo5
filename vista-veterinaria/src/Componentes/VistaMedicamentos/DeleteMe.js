@@ -1,8 +1,8 @@
 import React from 'react'
-import { useState } from 'react';
+
 import axios from'axios';
 export default function DeleteMe(props) {
-    
+
     const dato = {idMedicamento:0,codigo:0,nombre:'',fechaCaducidad:'',sustanciaActiva:''}
     var url='';
     const peticionPost = ()=>{

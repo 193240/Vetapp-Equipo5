@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+
+}
+.ht{
+    height: 100vh;
+}
+
+.ms-n5 {
+    margin-left: -40px;
+}
+.index{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.caja-todo{
+    height:340px;
+    width: 820px;
+
+}
+.transparente{
+    background-color: rgba(48, 160, 224, .80);
+    height:340px;
+
+}
+.caja-transparente div{
+    transition: all 500ms;
+}
+.caja-frontal{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    top: -170px;
+    position: relative;
+    transition: width 2s;
+    transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+    /* transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275); */
+}
+.login{
+    position: absolute;
+    display: block;
+    background: #fff;
+    height:300px;
+    width: 350px;
+    left:10px;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.register{
+    position: absolute;
+    background: #fff;
+    height:350px;
+    width: 350px;
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: block;
+    right:-360px;
+}
+.registro-btn{
+    background-color: #006BBB;
+    color: #ffffff;
+}
+.registro-btn:hover{
+    color: #006BBB !important;
+
+    border:1px solid #006BBB;
+}
+.alert-danger{
+    display: none;
+}
+.outline-pass{
+    border-color: #006BBB;
+    color: #006BBB;
+}
+.outline-pass:hover{
+    background-color: #006BBB;
+    color: #ffffff!important;
+}
+.alert-success{
+    display: none;
+}

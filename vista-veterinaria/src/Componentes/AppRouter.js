@@ -1,14 +1,16 @@
 import React from 'react'
-import {Routes,Route,} from 'react-router-dom';
+import {BrowserRouter as Router, Routes,Route,} from 'react-router-dom';
 import HomePage from './HomePage';
 import NavBar from './NavBar';
 import MenuPrincipal from './VistaCita/MenuPrincipalC';
 import MenuPrincipalD from './VistaDuenios/MenuPrincipalD';
 import MenuPrincipalM from './VistaMascota/MenuPrincipalM';
 import MenuPrincipalMe from './VistaMedicamentos/MenuPrincipalMe.js';
+import Registro from './Registro';
 export default function AppRouter() {
     return (
-        <div>
+         <Registro></Registro>
+        /*<div>
             <NavBar/>
                 <div>
                     <Routes>
@@ -19,6 +21,6 @@ export default function AppRouter() {
                         <Route path='/medicamentos/' element={<MenuPrincipalMe/>}/>
                     </Routes>
                 </div>
-        </div>
+        </div>*/
     )
 }
