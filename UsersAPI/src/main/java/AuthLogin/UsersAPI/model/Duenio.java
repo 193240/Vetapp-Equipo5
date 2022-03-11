@@ -14,23 +14,25 @@ public class Duenio {
     private String  telefono;
     @Column(name = "direccion")
     private String direccion;
-
+    @Column(name = "idUsuario")
+    private int idUsuario;
 
     public Duenio(){}
 
-    public Duenio(int id, String nombre, String telefono, String direccion) {
-        this.idDuenio = id;
+    public Duenio(int idDuenio, String nombre, String telefono, String direccion, int idUsuario) {
+        this.idDuenio = idDuenio;
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.idUsuario = idUsuario;
     }
 
     public int getIdDuenio() {
         return idDuenio;
     }
 
-    public void setIdDuenio(int id) {
-        this.idDuenio = id;
+    public void setIdDuenio(int idDuenio) {
+        this.idDuenio = idDuenio;
     }
 
     public String getNombre() {
@@ -55,5 +57,13 @@ public class Duenio {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }
