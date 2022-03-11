@@ -48,7 +48,7 @@ public class SecurityConfig {
 
                     .formLogin()
                     .and()
-                    .authorizeRequests().antMatchers("/owners/**").authenticated()
+                    .authorizeRequests().antMatchers("/**").authenticated()
                     .antMatchers("/user").permitAll();
 
         }
@@ -71,8 +71,8 @@ public class SecurityConfig {
                         )
                         .antMatchers(
                                 HttpMethod.POST,
-                                "/user",
-                                "/owners/**"
+                                "/user/*",
+                                "/**"
                         )
                 ;
             ;

@@ -14,15 +14,17 @@ public class User {
     @Column(name = "password")
     private String  password;
     @Column(name = "tipoU")
-    private String idDuenio;
+    private String tipoU;
 
-    public User(){}
+    public User() {
 
-    public User(int idUsuario, String user, String password, String idDuenio) {
+    }
+
+    public User(int idUsuario, String user, String password, String tipoU) {
         this.idUsuario = idUsuario;
         this.user = user;
         this.password = password;
-        this.idDuenio = idDuenio;
+        this.tipoU = tipoU;
     }
 
     public int getIdUsuario() {
@@ -49,11 +51,11 @@ public class User {
         this.password = password;
     }
 
-    public String getIdDuenio() {
-        return idDuenio;
+    public String getTipoU() {
+        return tipoU;
     }
 
-    public void setIdDuenio(String idDuenio) {
-        this.idDuenio = idDuenio;
+    public void setTipoU(String tipoU) {
+        this.tipoU = tipoU;
     }
 }
