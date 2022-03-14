@@ -14,9 +14,4 @@ public interface userRepository extends CrudRepository<User, Integer> {
     User save(User user);
     List<User> findAll();
     User findByUser(String user);
-
-
-/*@Query("SELECT user FROM User user WHERE user.idUsuario =:id")
-    @Transactional(readOnly = true)
-    User findUserId(@Param("id") Integer id);*/
 }

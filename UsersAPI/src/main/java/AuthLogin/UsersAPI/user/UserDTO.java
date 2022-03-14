@@ -30,6 +30,12 @@ public class UserDTO {
         this.token = token;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "user='" + user + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", token='" + token + '\'' +
+                '}';
+    }
 }

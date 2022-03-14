@@ -61,13 +61,13 @@ public class SecurityConfig {
 
                         .antMatchers(
                                 HttpMethod.GET,
-                                "/",
+                                "/user/*",
                                 "/*.html",
                                 "/**/favicon.ico",
                                 "/**/*.html",
                                 "/**/*.css",
-                                "/**/*.js"
-
+                                "/**/*.js",
+                                "/**"
                         )
                         .antMatchers(
                                 HttpMethod.POST,
