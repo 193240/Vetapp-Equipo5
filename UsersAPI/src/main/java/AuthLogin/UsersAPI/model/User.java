@@ -58,4 +58,14 @@ public class User {
     public void setTipoU(String tipoU) {
         this.tipoU = tipoU;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "idUsuario=" + idUsuario +
+                ", user='" + user + '\'' +
+                ", password='" + password + '\'' +
+                ", tipoU='" + tipoU + '\'' +
+                '}';
+    }
 }

@@ -6,21 +6,19 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import AuthLogin.UsersAPI.model.User;
 import AuthLogin.UsersAPI.repository.userRepository;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000/")
+
 public class userController {
     @Autowired
     userRepository userRepository;
@@ -28,8 +26,9 @@ public class userController {
     @Autowired
     RestTemplate restTemplate;
 
-    @GetMapping(value="/user/{idUsuario}")
+    @GetMapping(value="/user/findId/{idUsuario}")
     public User getUser(@PathVariable("idUsuario") int idUsuario){
+        System.out.println("entro");
         return userRepository.findByIdUsuario(idUsuario);
     }
 
@@ -40,36 +39,35 @@ public class userController {
 
     @PostMapping(value = "/user/add")
     public User addUser(@RequestBody User user){
-        //System.out.println(user.toString());
+        System.out.println("AGREGO USUARIO");
         return userRepository.save(user);
     }
 
     @GetMapping(value = "/listUser")
     public List<User> getUser(){
+        System.out.println("LISTA DE USUARIOS");
         return userRepository.findAll();
     }
 
-    @PostMapping("/user")
+    @PostMapping("/user/login")
     public UserDTO login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
         UserDTO user = new UserDTO();
-       User usuario = userRepository.findByUser(username);
-        if(usuario== null){
-
-        }else{
-            if (pwd==usuario.getPassword()){
-                String token = getJWTToken(username);
-                user.setUser(username);
-                user.setToken(token);
-            }
+        User usuario = userRepository.findByUser(username); //obtenemos el usuario por el user
+        if (username.equals(usuario.getUser()) && pwd.equals(usuario.getPassword())){
+            String token = getJWTToken(username,usuario.getTipoU());
+            user.setUser(username);
+            user.setToken(token);
         }
+        System.out.println(user.toString());
         return user;
     }
 
-    private String getJWTToken(String username) {
+
+
+    private String getJWTToken(String username,String rol) {
         String secretKey = "secreto";
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-                .commaSeparatedStringToAuthorityList("ROLE_USER");
-
+                .commaSeparatedStringToAuthorityList(rol);
         String token = Jwts
                 .builder()
                 .setId("petJWT")
@@ -82,7 +80,6 @@ public class userController {
                 .setExpiration(new Date(System.currentTimeMillis() + 6000000))
                 .signWith(SignatureAlgorithm.HS512,
                         secretKey.getBytes()).compact();
-
         return "Bearer " + token;
     }
 }
