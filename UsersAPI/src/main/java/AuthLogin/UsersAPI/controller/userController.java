@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import AuthLogin.UsersAPI.model.User;
 import AuthLogin.UsersAPI.repository.userRepository;
@@ -47,6 +48,20 @@ public class userController {
     public List<User> getUser(){
         System.out.println("LISTA DE USUARIOS");
         return userRepository.findAll();
+    }
+
+    @Transactional
+    @PostMapping(value = "/user/delete/{idUsuario}")
+    public int deleteUser(@PathVariable("idUsuario") int idUsuario){
+        System.out.println("ELIMINO USUARIO");
+        userRepository.deleteById(idUsuario);
+        return idUsuario;
+    }
+
+    @PostMapping(value = "/user/edit")
+    public User editUser(@RequestBody User user){
+        System.out.println("EDITO USUARIO");
+        return userRepository.save(user);
     }
 
     @PostMapping("/user/login")
