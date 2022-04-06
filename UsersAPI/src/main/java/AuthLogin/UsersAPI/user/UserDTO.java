@@ -5,6 +5,7 @@ public class UserDTO {
     private String user;
     private String pwd;
     private String token;
+    private String tipo;
 
     public String getUser() {
         return user;
@@ -30,12 +31,21 @@ public class UserDTO {
         this.token = token;
     }
 
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
                 "user='" + user + '\'' +
                 ", pwd='" + pwd + '\'' +
                 ", token='" + token + '\'' +
+                ", tipo='" + tipo + '\'' +
                 '}';
     }
 }

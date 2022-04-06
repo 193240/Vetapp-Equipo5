@@ -57,6 +57,7 @@ public class userController {
             String token = getJWTToken(username,usuario.getTipoU());
             user.setUser(username);
             user.setToken(token);
+            user.setTipo(usuario.getTipoU());
         }
         System.out.println(user.toString());
         return user;
