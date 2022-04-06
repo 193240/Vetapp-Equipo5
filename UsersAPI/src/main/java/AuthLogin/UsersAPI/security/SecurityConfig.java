@@ -46,36 +46,34 @@ public class SecurityConfig {
 
             http
 
-                    .formLogin()
-                    .and()
                     .authorizeRequests().antMatchers("/**").authenticated()
-                    .antMatchers("/user").permitAll();
+                    .antMatchers("/user/**").permitAll();
 
         }
 
 
-        @Override
-        public void configure(WebSecurity web) throws Exception {
-            web
-                    .ignoring()
+         @Override
+         public void configure(WebSecurity web) throws Exception {
+             web
+                     .ignoring()
 
-                        .antMatchers(
-                                HttpMethod.GET,
-                                "/user/*",
-                                "/*.html",
-                                "/**/favicon.ico",
-                                "/**/*.html",
-                                "/**/*.css",
-                                "/**/*.js",
-                                "/**"
-                        )
-                        .antMatchers(
-                                HttpMethod.POST,
-                                "/user/*",
-                                "/**"
-                        )
-                ;
-            ;
-        }
+                         .antMatchers(
+                                 HttpMethod.GET,
+                                 "/user/*",
+                                 "/*.html",
+                                 "/**/favicon.ico",
+                                 "/**/*.html",
+                                 "/**/*.css",
+                                 "/**/*.js",
+                                 "/**"
+                         )
+                         .antMatchers(
+                                 HttpMethod.POST,
+                                 "/user/*",
+                                 "/**"
+                         )
+                 ;
+             ;
+         }
     }
 }
