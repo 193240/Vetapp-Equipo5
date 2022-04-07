@@ -7,6 +7,14 @@ public class UserDTO {
     private String token;
     private String tipo;
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     public String getUser() {
         return user;
     }
@@ -29,14 +37,6 @@ public class UserDTO {
 
     public void setToken(String token) {
         this.token = token;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getTipo() {
-        return tipo;
     }
 
     @Override
