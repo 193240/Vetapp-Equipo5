@@ -9,6 +9,7 @@ import gomezherrera.mascotas.model.Mascota;
 import gomezherrera.mascotas.repository.MascotaRepository;
 import org.springframework.web.client.RestTemplate;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -26,15 +27,15 @@ public class MascotaController {
         return mascotaRepository.findByIdDuenio(idDuenio);
     }
 
-    @GetMapping(value = "/listByIdMedicamento/{idMedicamento}")
+    /*@GetMapping(value = "/listByIdMedicamento/{idMedicamento}")
     public List<Mascota> getMascotaByIdMedicamento(@PathVariable("idMedicamento") int idMedicamento){
         return mascotaRepository.findByIdMedicamento(idMedicamento);
-    }
+    }*/
 
-    @GetMapping(value = "/listByIdCita/{idCita}")
+   /* @GetMapping(value = "/listByIdCita/{idCita}")
     public Mascota getMascotaByIdCita(@PathVariable("idCita") int idCita){
         return mascotaRepository.findByIdCita(idCita);
-    }
+    }*/
 
     @GetMapping(value = "/listMascotas")
     public List<Mascota> getListMascota(){
@@ -51,24 +52,29 @@ public class MascotaController {
         return mascotaRepository.findByTipo(mascota.getTipo());
     }
 
+    @GetMapping(value = "/mascotaid/{idMascota}")
+    public Mascota getMascotaID(@PathVariable("idMascota") int idMascota){
+        return mascotaRepository.findByIdMascota(idMascota);
+
+    }
     @GetMapping(value = "/mascotaConDuenio/{idMascota}")
     public MascotaDuenio getMascotaConDuenio(@PathVariable("idMascota") int idMascota){
         Mascota mascota = mascotaRepository.findByIdMascota(idMascota);
         MascotaDuenio mascotaDuenio= null;
         if (mascota!=null){
-            mascotaDuenio = new MascotaDuenio(mascota.getIdMascota(), mascota.getNombre(), mascota.getTipo(), mascota.getIdDuenio(), mascota.getIdCita(), mascota.getIdMedicamento(), mascota.getFechaIngreso(), mascota.getRazon());
+            mascotaDuenio = new MascotaDuenio(mascota.getIdMascota(), mascota.getNombre(), mascota.getTipo(), mascota.getIdDuenio(), mascota.getFechaIngreso(), mascota.getRazon());
+//            mascotaDuenio = new MascotaDuenio(mascota.getIdMascota(), mascota.getNombre(), mascota.getTipo(), mascota.getIdDuenio(), mascota.getIdCita(), mascota.getIdMedicamento(), mascota.getFechaIngreso(), mascota.getRazon());
             Duenio duenio = restTemplate.getForObject("http://localhost:18080/duenio/"+ mascota.getIdDuenio(), Duenio.class);
             mascotaDuenio.setDuenio(duenio);
 
         }
         return mascotaDuenio;
     }
-
     @PostMapping(value = "/mascota/nombre")
     public List<Mascota> getMascotaByNombre(@RequestBody Mascota mascota){
         return mascotaRepository.findAllByNombre(mascota.getNombre());
     }
-
+    @Transactional
     @PostMapping(value = "/mascota/add")
     public Mascota addMascota(@RequestBody Mascota mascota){
         return mascotaRepository.save(mascota);
@@ -81,7 +87,7 @@ public class MascotaController {
         }
         return null;
     }
-
+    @Transactional
     @PostMapping(value = "/mascota/delete")
     public Boolean deleteMascota(@RequestBody Mascota mascota) {
         Mascota m = mascotaRepository.findByIdMascota(mascota.getIdMascota());

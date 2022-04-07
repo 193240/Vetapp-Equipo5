@@ -18,11 +18,11 @@ public class Mascota {
     @Column(name = "idDuenio")
     private int idDuenio;
 
-    @Column(name = "idCita")
+   /* @Column(name = "idCita")
     private int idCita;
 
     @Column(name = "idMedicamento")
-    private int idMedicamento;
+    private int idMedicamento;*/
 
     @Column(name = "fechaIngreso")
     private String fechaIngreso;
@@ -34,13 +34,22 @@ public class Mascota {
 
     }
 
-    public Mascota(int idMascota, String nombre, String tipo, int idDuenio, int idCita, int idMedicamento, String fechaIngreso, String razon) {
+   /* public Mascota(int idMascota, String nombre, String tipo, int idDuenio, int idCita, int idMedicamento, String fechaIngreso, String razon) {
         this.idMascota = idMascota;
         this.nombre = nombre;
         this.tipo = tipo;
         this.idDuenio = idDuenio;
         this.idCita = idCita;
         this.idMedicamento=idMedicamento;
+        this.fechaIngreso = fechaIngreso;
+        this.razon = razon;
+    }*/
+
+    public Mascota(int idMascota, String nombre, String tipo, int idDuenio, String fechaIngreso, String razon) {
+        this.idMascota = idMascota;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.idDuenio = idDuenio;
         this.fechaIngreso = fechaIngreso;
         this.razon = razon;
     }
@@ -77,7 +86,7 @@ public class Mascota {
         this.idDuenio = idDuenio;
     }
 
-    public int getIdCita() {
+    /*public int getIdCita() {
         return idCita;
     }
 
@@ -91,7 +100,7 @@ public class Mascota {
 
     public void setIdMedicamento(int idMedicamento) {
         this.idMedicamento = idMedicamento;
-    }
+    }*/
 
     public String getFechaIngreso() {
         return fechaIngreso;
