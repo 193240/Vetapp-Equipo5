@@ -8,5 +8,5 @@ public interface duenioRepository extends CrudRepository<Duenio, Integer> {
     //Duenio findByIdDuenio(int idDuenio);
     Duenio save(Duenio duenio);
     List<Duenio> findAll();
-    //Duenio findByUser(String user);
+    Duenio findByIdUsuario(int idUser);
 }

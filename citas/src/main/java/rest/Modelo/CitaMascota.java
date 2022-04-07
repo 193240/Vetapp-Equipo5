@@ -6,16 +6,16 @@ public class CitaMascota extends Cita{
     public CitaMascota() {
     }
 
-    public CitaMascota(int id, String fecha, String hora, String tipoServicio) {
-        super(id, fecha, hora, tipoServicio);
+    public CitaMascota(int id, String fecha, String hora, String tipoServicio, int idMascota) {
+        super(id, fecha, hora, tipoServicio, idMascota);
     }
 
     public CitaMascota(Mascota mascota) {
         this.mascota = mascota;
     }
 
-    public CitaMascota(int id, String fecha, String hora, String tipoServicio, Mascota mascota) {
-        super(id, fecha, hora, tipoServicio);
+    public CitaMascota(int id, String fecha, String hora, String tipoServicio, int idMascota, Mascota mascota) {
+        super(id, fecha, hora, tipoServicio, idMascota);
         this.mascota = mascota;
     }
 

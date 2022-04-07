@@ -19,13 +19,17 @@ public class Cita {
     @Column(name = "tipoServicio")
     private String tipoServicio;
 
+    @Column(name = "idMascota")
+    private int idMascota;
+
     public Cita(){}
 
-    public Cita(int id, String fecha, String hora, String tipoServicio) {
+    public Cita(int id, String fecha, String hora, String tipoServicio, int idMascota) {
         this.idCita = id;
         this.fecha = fecha;
         this.hora = hora;
         this.tipoServicio = tipoServicio;
+        this.idMascota = idMascota;
     }
 
     public int getIdCita() {
@@ -58,5 +62,13 @@ public class Cita {
 
     public void setTipoServicio(String tipoServicio) {
         this.tipoServicio = tipoServicio;
+    }
+
+    public int getIdMascota() {
+        return idMascota;
+    }
+
+    public void setIdMascota(int idMascota) {
+        this.idMascota = idMascota;
     }
 }

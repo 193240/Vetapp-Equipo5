@@ -38,7 +38,7 @@ public class CitaController {
         Cita cita = citaRepository.findByIdCita(idCita);
         CitaMascota citaMascota = null;
         if(cita != null){
-            citaMascota = new CitaMascota(cita.getIdCita(),cita.getFecha(), cita.getHora(), cita.getTipoServicio());
+            citaMascota = new CitaMascota(cita.getIdCita(),cita.getFecha(), cita.getHora(), cita.getTipoServicio(), cita.getIdMascota());
             Mascota mascota = restTemplate.getForObject("http://localhost:9998/listByIdCita/"+citaMascota.getIdCita(),Mascota.class);
             citaMascota.setMascota(mascota);
         }

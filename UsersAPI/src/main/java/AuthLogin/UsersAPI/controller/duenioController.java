@@ -22,4 +22,14 @@ public class duenioController {
         return duenioRepository.save(duenio);
     }
 
+    @GetMapping(value = "/duenio/{idUser}")
+    public Duenio getMascotaID(@PathVariable("idUser") int idUser){
+        return duenioRepository.findByIdUsuario(idUser);
+    }
+
+    /*@GetMapping(value = "/duenio/{idUser}")
+    public Mascota getMascotaID(@PathVariable("idMascota") int idduenio){
+        return mascotaepository.findByIdDuenio(idDuenio);
+    }*/
+
 }
